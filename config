@@ -1,0 +1,7 @@
+# mysql root user login details
+-username: root
+-password: root
+
+# Open mysql command line from docker
+sudo docker exec -it [container_name] bash
+

@@ -1,0 +1,16 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Rotten Falafels",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.server.test/v1",
+      "description": "This server will be used for testing purposes"
+    }
+  ],
+  "paths": {
+
+  }
+}
