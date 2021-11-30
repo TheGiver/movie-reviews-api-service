@@ -4,13 +4,78 @@
     "title": "Rotten Falafels",
     "version": "1.0"
   },
+   "consumes": [
+     "application/json"
+   ],
+  "produces": [
+    "application/json"
+  ],
   "servers": [
     {
       "url": "https://api.server.test/v1",
       "description": "This server will be used for testing purposes"
+    },
+    {
+      "url": "https://localhost:8081/rotten-falafels",
+      "description": "This server will be used for testing purposes in case the first one did not work which I suspect that it won't"
+    },
+    {
+      "url": "https://virtserver.swaggerhub.com/Xx_Confusion_xX/rotten-falafels/1.0.0",
+      "description": "This server will be used for testing purposes and it refers to the same server provided by swagger openAPI"
     }
   ],
   "paths": {
+    "/movies/all": {
+      "get": {
+        "operationId": "listAllMovies",
+        "summary": "List all movies that are currently available in the system. If no movies are in the system, then an empty json object will be sent to the user",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful query response",
+            "examples": {
+              "application/json": [
+              "{\n  \"movie\": {\n    \"title\": \"movie_title\",\n    \"release_date\": \"dd-MM-yyyy\",\n    \"directed_by\": \"director_name\",\n    \"cast\": {\n      \"member\": {\n        \"name\": \"member_name\",\n        \"role\": \"actor | makeup artist | etc\"\n      }\n    }\n  }\n}",
+              "{}"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/movies/{movieTitle}": {
+      "get": {
+        "operationId": "retrieveSpecificMovieRecordByTitle",
+        "summary": "Retrieve a specific movie if it exists in the database. If the movie is not available, then a 404 error code is returned",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "movieTitle",
+            "in": "path",
+            "description": "Title of movie to fetch",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The movie title ",
+            "examples": {
 
+            }
+          },
+          "404": {
+            "description": "",
+            "examples": {
+
+            }
+          }
+        }
+      }
+    }
   }
 }
