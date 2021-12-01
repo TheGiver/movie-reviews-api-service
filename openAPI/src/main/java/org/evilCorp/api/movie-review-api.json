@@ -35,10 +35,10 @@
         "responses": {
           "200": {
             "description": "successful query response",
-            "examples": {
+            "content": {
               "application/json": [
-              "{\n  \"movie\": {\n    \"title\": \"movie_title\",\n    \"release_date\": \"dd-MM-yyyy\",\n    \"directed_by\": \"director_name\",\n    \"cast\": {\n      \"member\": {\n        \"name\": \"member_name\",\n        \"role\": \"actor | makeup artist | etc\"\n      }\n    }\n  }\n}",
-              "{}"
+                "{\n  \"movie\": {\n    \"title\": \"movie_title\",\n    \"release_date\": \"dd-MM-yyyy\",\n    \"directed_by\": \"director_name\",\n    \"cast\": {\n      \"member\": {\n        \"name\": \"member_name\",\n        \"role\": \"actor | makeup artist | etc\"\n      }\n    }\n  }\n}",
+                "{}"
               ]
             }
           }
@@ -64,15 +64,38 @@
         "responses": {
           "200": {
             "description": "The movie title ",
-            "examples": {
+            "content": {
+              "application/json": [
 
+              ]
             }
           },
           "404": {
             "description": "",
-            "examples": {
-
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
             }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The user ID."
+          },
+          "username": {
+            "type": "string",
+            "description": "The user name."
           }
         }
       }
