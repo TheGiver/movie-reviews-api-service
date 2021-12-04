@@ -25,6 +25,60 @@
     }
   ],
   "paths": {
+    "/movies/summary/all": {
+      "get": {
+        "operationId": "",
+        "summary": "Retrieve all movie titles, avg ratings and people's comments and reviews that are available in the database"
+      }
+    },
+    "/movies/summary/{movieTitle}": {
+      "get": {
+        "operationId": "",
+        "summary": "Retrieve the movie title, avg rating and people's comments and reviews for that movie if it exists in the database"
+      }
+    },
+    "/ratings/avg-rating/{movieTitle}": {
+      "get": {
+        "operationId": "",
+        "summary": "Retrieve the average rating [out of 10] for the movie specified if it exists in the database"
+      }
+    },
+    "/ratings/{movieTitle}": {
+      "get": {
+        "operationId": "",
+        "summary": "Retrieve all ratings [out of 10] for the movie specified if it exists in the database"
+      }
+    },
+    "/reviews/all/{movieTitle}": {
+      "get": {
+        "operationId": "",
+        "summary": "Retrieve all the reviews published for the specified movie if it exists in the database. The reviews contain either people's comments or their ratings or both depending on availability"
+      }
+    },
+    "/reviews/good/{movieTitle}": {
+      "get": {
+        "operationId": "",
+        "summary": "Retrieve all positive reviews for the specified movie if it exists in the database. The reviews contain either people's comments or their ratings or both depending on availability"
+      }
+    },
+    "/reviews/bad/{movieTitle}": {
+      "get": {
+        "operationId": "",
+        "summary": "Retrieve all negative reviews for the specified movie if it exists in the database. The reviews contain either people's comments or their ratings or both depending on availability"
+      }
+    },
+    "/publish/new-movie": {
+      "post": {
+        "operationId": "",
+        "summary": "Publish a new movie to our database to help us grow and provide support to a wider range of movies and/or series"
+      }
+    },
+    "/publish/movie-review": {
+      "post": {
+        "operationId": "",
+        "summary": "Add a review to a movie of choice. A review consists of either a comment a rating or both depending the user's choice"
+      }
+    },
     "/movies/all": {
       "get": {
         "operationId": "listAllMovies",
@@ -63,11 +117,13 @@
         ],
         "responses": {
           "200": {
-            "description": "The movie title ",
+            "description": "A successful response should return ",
             "content": {
-              "application/json": [
-
-              ]
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/movie"
+                }
+              }
             }
           },
           "404": {
@@ -75,7 +131,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User"
+                  "$ref": "#/components/schemas/movie"
                 }
               }
             }
@@ -86,16 +142,41 @@
   },
   "components": {
     "schemas": {
-      "User": {
+      "movie": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "description": "The user ID."
-          },
-          "username": {
+          "title": {
             "type": "string",
-            "description": "The user name."
+            "description": "movie title"
+          },
+          "release_date": {
+            "type": "string",
+            "format": "date",
+            "description": "movie release date"
+          },
+          "directed_by": {
+            "type": "string",
+            "description": "director name"
+          },
+          "cast": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "$ref": "#/components/schemas/cast_member"
+            }
+          }
+        }
+      },
+      "cast_member": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "member name"
+          },
+          "role": {
+            "type": "string",
+            "description": "cast member's role in the movie (i.e, actor, makeup artist, etc)"
           }
         }
       }
