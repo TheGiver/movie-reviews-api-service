@@ -27,58 +27,270 @@
   "paths": {
     "/movies/summary/all": {
       "get": {
-        "operationId": "",
-        "summary": "Retrieve all movie titles, avg ratings and people's comments and reviews that are available in the database"
+        "operationId": "retrieveAllMovieSummaries",
+        "summary": "Retrieve all movie titles, avg ratings and people's comments and reviews that are available in the database",
+        "responses": {
+          "200": {
+            "description": "Movie records retrieved successfully",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          }
+        }
       }
     },
     "/movies/summary/{movieTitle}": {
       "get": {
-        "operationId": "",
-        "summary": "Retrieve the movie title, avg rating and people's comments and reviews for that movie if it exists in the database"
+        "operationId": "retrieveMovieSummaryByTitle",
+        "summary": "Retrieve the movie title, avg rating and people's comments and reviews for that movie if it exists in the database",
+        "responses": {
+          "200": {
+            "description": "Movie record retrieved",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          },
+          "404": {
+            "description": "Movie not found",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          }
+        }
       }
     },
     "/ratings/avg-rating/{movieTitle}": {
       "get": {
-        "operationId": "",
-        "summary": "Retrieve the average rating [out of 10] for the movie specified if it exists in the database"
+        "operationId": "retrieveAvgRatingByTitle",
+        "summary": "Retrieve the average rating [out of 10] for the movie specified if it exists in the database",
+        "responses": {
+          "200": {
+            "description": "Movie found and average rating was calculated",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          },
+          "404": {
+            "description": "Movie not found or no ratings exist",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          }
+        }
       }
     },
     "/ratings/{movieTitle}": {
       "get": {
-        "operationId": "",
-        "summary": "Retrieve all ratings [out of 10] for the movie specified if it exists in the database"
+        "operationId": "retrieveAllRatingsByTitle",
+        "summary": "Retrieve all ratings [out of 10] for the movie specified if it exists in the database",
+        "responses": {
+          "200": {
+            "description": "Movie found and ratings were retrieved",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          },
+          "404": {
+            "description": "Movie not found",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          }
+        }
       }
     },
     "/reviews/all/{movieTitle}": {
       "get": {
-        "operationId": "",
-        "summary": "Retrieve all the reviews published for the specified movie if it exists in the database. The reviews contain either people's comments or their ratings or both depending on availability"
+        "operationId": "retrieveAllReviewsByTitle",
+        "summary": "Retrieve all the reviews published for the specified movie if it exists in the database. The reviews contain either people's comments or their ratings or both depending on availability",
+        "responses": {
+          "200": {
+            "description": "Movie found and reviews were retrieved",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          },
+          "404": {
+            "description": "Movie not found",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          }
+        }
       }
     },
     "/reviews/good/{movieTitle}": {
       "get": {
-        "operationId": "",
-        "summary": "Retrieve all positive reviews for the specified movie if it exists in the database. The reviews contain either people's comments or their ratings or both depending on availability"
+        "operationId": "retrieveAllPositiveReviewsByTitle",
+        "summary": "Retrieve all positive reviews for the specified movie if it exists in the database. The reviews contain either people's comments or their ratings or both depending on availability",
+        "responses": {
+          "200": {
+            "description": "Movie found and positive reviews were fetched",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          },
+          "404": {
+            "description": "Movie not found",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          }
+        }
       }
     },
     "/reviews/bad/{movieTitle}": {
       "get": {
-        "operationId": "",
-        "summary": "Retrieve all negative reviews for the specified movie if it exists in the database. The reviews contain either people's comments or their ratings or both depending on availability"
+        "operationId": "retrieveAllNegativeReviewsByTitle",
+        "summary": "Retrieve all negative reviews for the specified movie if it exists in the database. The reviews contain either people's comments or their ratings or both depending on availability",
+        "responses": {
+          "200": {
+            "description": "Movie found and negative reviews were fetched",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          },
+          "404": {
+            "description": "Movie not found",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          }
+        }
       }
     },
     "/publish/new-movie": {
       "post": {
-        "operationId": "",
-        "summary": "Publish a new movie to our database to help us grow and provide support to a wider range of movies and/or series"
+        "operationId": "addAMovieToThePool",
+        "summary": "Publish a new movie to our database to help us grow and provide support to a wider range of movies and/or series",
+        "responses": {
+          "204": {
+            "description": "Movie registered in the system",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid body request",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          }
+        }
       }
     },
     "/publish/movie-review": {
       "post": {
-        "operationId": "",
-        "summary": "Add a review to a movie of choice. A review consists of either a comment a rating or both depending the user's choice"
+        "operationId": "publishAMovieReview",
+        "summary": "Add a review to a movie of choice. A review consists of either a comment a rating or both depending the user's choice",
+        "responses": {
+          "204": {
+            "description": "Review added for the selected movie",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid body request",
+            "content": {
+              "schema": {
+                "$ref": "Invalid body request"
+              }
+            }
+          }
+        }
       }
     },
+
+
     "/movies/all": {
       "get": {
         "operationId": "listAllMovies",
@@ -140,6 +352,8 @@
       }
     }
   },
+
+
   "components": {
     "schemas": {
       "movie": {
