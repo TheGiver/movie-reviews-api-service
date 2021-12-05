@@ -53,6 +53,17 @@
       "get": {
         "operationId": "retrieveMovieSummaryByTitle",
         "summary": "Retrieve the movie title, avg rating and people's comments and reviews for that movie if it exists in the database",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "movieTitle",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Name of the movie to search"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Movie record retrieved",
@@ -85,6 +96,17 @@
       "get": {
         "operationId": "retrieveAvgRatingByTitle",
         "summary": "Retrieve the average rating [out of 10] for the movie specified if it exists in the database",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "movieTitle",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Name of the movie to search"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Movie found and average rating was calculated",
@@ -117,6 +139,17 @@
       "get": {
         "operationId": "retrieveAllRatingsByTitle",
         "summary": "Retrieve all ratings [out of 10] for the movie specified if it exists in the database",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "movieTitle",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Name of the movie to search"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Movie found and ratings were retrieved",
@@ -149,6 +182,17 @@
       "get": {
         "operationId": "retrieveAllReviewsByTitle",
         "summary": "Retrieve all the reviews published for the specified movie if it exists in the database. The reviews contain either people's comments or their ratings or both depending on availability",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "movieTitle",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Name of the movie to search"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Movie found and reviews were retrieved",
@@ -181,6 +225,17 @@
       "get": {
         "operationId": "retrieveAllPositiveReviewsByTitle",
         "summary": "Retrieve all positive reviews for the specified movie if it exists in the database. The reviews contain either people's comments or their ratings or both depending on availability",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "movieTitle",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Name of the movie to search"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Movie found and positive reviews were fetched",
@@ -213,6 +268,17 @@
       "get": {
         "operationId": "retrieveAllNegativeReviewsByTitle",
         "summary": "Retrieve all negative reviews for the specified movie if it exists in the database. The reviews contain either people's comments or their ratings or both depending on availability",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "movieTitle",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Name of the movie to search"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Movie found and negative reviews were fetched",
@@ -352,7 +418,6 @@
       }
     }
   },
-
 
   "components": {
     "schemas": {
