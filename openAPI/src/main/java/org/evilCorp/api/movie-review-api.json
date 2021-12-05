@@ -4,12 +4,6 @@
     "title": "Rotten Falafels",
     "version": "1.0"
   },
-   "consumes": [
-     "application/json"
-   ],
-  "produces": [
-    "application/json"
-  ],
   "servers": [
     {
       "url": "https://api.server.test/v1",
@@ -311,6 +305,17 @@
       "post": {
         "operationId": "addAMovieToThePool",
         "summary": "Publish a new movie to our database to help us grow and provide support to a wider range of movies and/or series",
+        "requestBody": {
+          "description": "Expected format to add a new movie to the system",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/new_movie"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Movie registered in the system",
@@ -335,6 +340,17 @@
       "post": {
         "operationId": "publishAMovieReview",
         "summary": "Add a review to a movie of choice. A review consists of either a comment a rating or both depending the user's choice",
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/new_review"
+              }
+            }
+          }
+        },
         "responses": {
           "204": {
             "description": "Review added for the selected movie",
@@ -354,108 +370,35 @@
           }
         }
       }
-    },
-
-
-    "/movies/all": {
-      "get": {
-        "operationId": "listAllMovies",
-        "summary": "List all movies that are currently available in the system. If no movies are in the system, then an empty json object will be sent to the user",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "successful query response",
-            "content": {
-              "application/json": [
-                "{\n  \"movie\": {\n    \"title\": \"movie_title\",\n    \"release_date\": \"dd-MM-yyyy\",\n    \"directed_by\": \"director_name\",\n    \"cast\": {\n      \"member\": {\n        \"name\": \"member_name\",\n        \"role\": \"actor | makeup artist | etc\"\n      }\n    }\n  }\n}",
-                "{}"
-              ]
-            }
-          }
-        }
-      }
-    },
-    "/movies/{movieTitle}": {
-      "get": {
-        "operationId": "retrieveSpecificMovieRecordByTitle",
-        "summary": "Retrieve a specific movie if it exists in the database. If the movie is not available, then a 404 error code is returned",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "movieTitle",
-            "in": "path",
-            "description": "Title of movie to fetch",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response should return ",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/movie"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/movie"
-                }
-              }
-            }
-          }
-        }
-      }
     }
   },
-
   "components": {
     "schemas": {
-      "movie": {
+      "new_movie": {
         "type": "object",
         "properties": {
           "title": {
-            "type": "string",
-            "description": "movie title"
+            "type": "string"
           },
           "release_date": {
             "type": "string",
-            "format": "date",
-            "description": "movie release date"
-          },
-          "directed_by": {
-            "type": "string",
-            "description": "director name"
-          },
-          "cast": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "$ref": "#/components/schemas/cast_member"
-            }
+            "format": "date"
           }
         }
       },
-      "cast_member": {
+      "new_review": {
         "type": "object",
         "properties": {
-          "name": {
-            "type": "string",
-            "description": "member name"
+          "movie": {
+            "type": "string"
           },
-          "role": {
-            "type": "string",
-            "description": "cast member's role in the movie (i.e, actor, makeup artist, etc)"
+          "rating": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10
+          },
+          "comments": {
+            "type": "string"
           }
         }
       }
