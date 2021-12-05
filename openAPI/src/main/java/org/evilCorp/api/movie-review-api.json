@@ -332,6 +332,14 @@
                 "$ref": ""
               }
             }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "schema": {
+                "$ref": ""
+              }
+            }
           }
         }
       }
@@ -364,7 +372,15 @@
             "description": "Invalid body request",
             "content": {
               "schema": {
-                "$ref": "Invalid body request"
+                "$ref": ""
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "schema": {
+                "$ref": ""
               }
             }
           }
