@@ -28,7 +28,7 @@
             "description": "Movie records retrieved successfully",
             "content": {
               "schema": {
-                "$ref": ""
+                "$ref": "#/components/schemas/movieReviewsSchema"
               }
             }
           },
@@ -63,7 +63,7 @@
             "description": "Movie record retrieved",
             "content": {
               "schema": {
-                "$ref": ""
+                "$ref": "#/components/schemas/movieReviewSchema"
               }
             }
           },
@@ -311,7 +311,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/new_movie"
+                "$ref": "#/components/schemas/moviePublicationSchema"
               }
             }
           }
@@ -354,7 +354,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/new_review"
+                "$ref": "#/components/schemas/movieReviewPublicationSchema"
               }
             }
           }
@@ -390,7 +390,7 @@
   },
   "components": {
     "schemas": {
-      "new_movie": {
+      "moviePublicationSchema": {
         "type": "object",
         "properties": {
           "title": {
@@ -402,11 +402,11 @@
           }
         }
       },
-      "new_review": {
+      "movieReviewPublicationSchema": {
         "type": "object",
         "properties": {
           "movie": {
-            "type": "string"
+            "type": "string",
           },
           "rating": {
             "type": "integer",
@@ -415,6 +415,48 @@
           },
           "comments": {
             "type": "string"
+          }
+        }
+      },
+      "movieReviewsSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/movieReviewSchema"
+        }
+      },
+      "movieReviewSchema": {
+        "type": "object",
+        "properties": {
+          "movie": {
+            "type": "string"
+          },
+          "avg-rating": {
+            "type": "number",
+            "format": "double"
+          },
+          "reviews": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/reviewSchema"
+            }
+          }
+        }
+      },
+      "reviewSchema": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "rating": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10
+          },
+          "comment": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 500
           }
         }
       }
