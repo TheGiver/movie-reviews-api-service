@@ -27,16 +27,20 @@
           "200": {
             "description": "Movie records retrieved successfully",
             "content": {
-              "schema": {
-                "$ref": "#/components/schemas/movieReviewsSchema"
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/movieReviewsSchema"
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "schema": {
-                "$ref": ""
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/internalServerErrorSchema"
+                }
               }
             }
           }
@@ -62,24 +66,30 @@
           "200": {
             "description": "Movie record retrieved",
             "content": {
-              "schema": {
-                "$ref": "#/components/schemas/movieReviewSchema"
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/movieReviewSchema"
+                }
               }
             }
           },
           "404": {
             "description": "Movie not found",
             "content": {
-              "schema": {
-                "$ref": ""
+              "application/json": {
+                "schema": {
+                  "$ref": ""
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "schema": {
-                "$ref": ""
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/internalServerErrorSchema"
+                }
               }
             }
           }
@@ -105,24 +115,30 @@
           "200": {
             "description": "Movie found and average rating was calculated",
             "content": {
-              "schema": {
-                "$ref": "#/components/schemas/avgMovieRatingSchema"
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/avgMovieRatingSchema"
+                }
               }
             }
           },
           "404": {
             "description": "Movie not found or no ratings exist",
             "content": {
-              "schema": {
-                "$ref": ""
+              "application/json": {
+                "schema": {
+                  "$ref": ""
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "schema": {
-                "$ref": ""
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/internalServerErrorSchema"
+                }
               }
             }
           }
@@ -148,24 +164,30 @@
           "200": {
             "description": "Movie found and ratings were retrieved",
             "content": {
-              "schema": {
-                "$ref": "#/components/schemas/movieRatings"
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/movieRatingsSchema"
+                }
               }
             }
           },
           "404": {
             "description": "Movie not found",
             "content": {
-              "schema": {
-                "$ref": ""
+              "application/json": {
+                "schema": {
+                  "$ref": ""
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "schema": {
-                "$ref": ""
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/internalServerErrorSchema"
+                }
               }
             }
           }
@@ -191,24 +213,30 @@
           "200": {
             "description": "Movie found and reviews were retrieved",
             "content": {
-              "schema": {
-                "$ref": "#/components/schemas/reviewsSchema"
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/reviewsSchema"
+                }
               }
             }
           },
           "404": {
             "description": "Movie not found",
             "content": {
-              "schema": {
-                "$ref": ""
+              "application/json": {
+                "schema": {
+                  "$ref": ""
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "schema": {
-                "$ref": ""
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/internalServerErrorSchema"
+                }
               }
             }
           }
@@ -234,24 +262,30 @@
           "200": {
             "description": "Movie found and positive reviews were fetched",
             "content": {
-              "schema": {
-                "$ref": "#/components/schemas/reviewsSchema"
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/reviewsSchema"
+                }
               }
             }
           },
           "404": {
             "description": "Movie not found",
             "content": {
-              "schema": {
-                "$ref": ""
+              "application/json": {
+                "schema": {
+                  "$ref": ""
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "schema": {
-                "$ref": ""
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/internalServerErrorSchema"
+                }
               }
             }
           }
@@ -277,24 +311,30 @@
           "200": {
             "description": "Movie found and negative reviews were fetched",
             "content": {
-              "schema": {
-                "$ref": "#/components/schemas/reviewsSchema"
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/reviewsSchema"
+                }
               }
             }
           },
           "404": {
             "description": "Movie not found",
             "content": {
-              "schema": {
-                "$ref": ""
+              "application/json": {
+                "schema": {
+                  "$ref": ""
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "schema": {
-                "$ref": ""
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/internalServerErrorSchema"
+                }
               }
             }
           }
@@ -318,26 +358,25 @@
         },
         "responses": {
           "204": {
-            "description": "Movie registered in the system",
-            "content": {
-              "schema": {
-                "$ref": ""
-              }
-            }
+            "description": "Movie registered in the system"
           },
           "400": {
             "description": "Invalid body request",
             "content": {
-              "schema": {
-                "$ref": ""
+              "application/json": {
+                "schema": {
+                  "$ref": ""
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "schema": {
-                "$ref": ""
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/internalServerErrorSchema"
+                }
               }
             }
           }
@@ -361,26 +400,25 @@
         },
         "responses": {
           "204": {
-            "description": "Review added for the selected movie",
-            "content": {
-              "schema": {
-                "$ref": ""
-              }
-            }
+            "description": "Review added for the selected movie"
           },
           "400": {
             "description": "Invalid body request",
             "content": {
-              "schema": {
-                "$ref": ""
+              "application/json": {
+                "schema": {
+                  "$ref": ""
+                }
               }
             }
           },
           "500": {
             "description": "Internal server error",
             "content": {
-              "schema": {
-                "$ref": ""
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/internalServerErrorSchema"
+                }
               }
             }
           }
@@ -457,15 +495,6 @@
           }
         }
       },
-      "positiveReviewsSchema": {
-        "type": "object",
-        "properties": {
-          "title": {
-            "type": "string"
-          },
-
-        }
-      },
       "reviewSchema": {
         "type": "object",
         "properties": {
@@ -497,7 +526,7 @@
           }
         }
       },
-      "movieRatings": {
+      "movieRatingsSchema": {
         "type": "object",
         "properties": {
           "title": {
@@ -506,12 +535,12 @@
           "ratings": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/movieRating"
+              "$ref": "#/components/schemas/movieRatingSchema"
             }
           }
         }
       },
-      "movieRating": {
+      "movieRatingSchema": {
         "type": "object",
         "properties": {
           "user": {
@@ -521,6 +550,20 @@
             "type": "number",
             "minimum": 0,
             "maximum": 10
+          }
+        }
+      },
+      "internalServerErrorSchema": {
+        "type": "object",
+        "properties": {
+          "error-code": {
+            "type": "string",
+            "minLength": "2",
+            "maxLength": "4",
+            "example": "{00, 123, 3412}"
+          },
+          "extra-info": {
+            "type": "string",
           }
         }
       }
