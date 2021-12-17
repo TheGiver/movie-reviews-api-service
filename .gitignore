@@ -4,6 +4,13 @@
 # Ada Library Information
 *.ali
 
+# Macbook
+.DS_Store
+
+# Maven
+log/
+target/
+
 # Intellij files
 ### JetBrains ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
