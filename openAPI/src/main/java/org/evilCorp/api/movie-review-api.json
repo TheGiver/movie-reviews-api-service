@@ -106,7 +106,7 @@
             "description": "Movie found and average rating was calculated",
             "content": {
               "schema": {
-                "$ref": ""
+                "$ref": "#/components/schemas/avgMovieRatingSchema"
               }
             }
           },
@@ -149,7 +149,7 @@
             "description": "Movie found and ratings were retrieved",
             "content": {
               "schema": {
-                "$ref": ""
+                "$ref": "#/components/schemas/movieRatings"
               }
             }
           },
@@ -192,7 +192,7 @@
             "description": "Movie found and reviews were retrieved",
             "content": {
               "schema": {
-                "$ref": ""
+                "$ref": "#/components/schemas/reviewsSchema"
               }
             }
           },
@@ -235,7 +235,7 @@
             "description": "Movie found and positive reviews were fetched",
             "content": {
               "schema": {
-                "$ref": ""
+                "$ref": "#/components/schemas/reviewsSchema"
               }
             }
           },
@@ -278,7 +278,7 @@
             "description": "Movie found and negative reviews were fetched",
             "content": {
               "schema": {
-                "$ref": ""
+                "$ref": "#/components/schemas/reviewsSchema"
               }
             }
           },
@@ -405,8 +405,8 @@
       "movieReviewPublicationSchema": {
         "type": "object",
         "properties": {
-          "movie": {
-            "type": "string",
+          "title": {
+            "type": "string"
           },
           "rating": {
             "type": "integer",
@@ -427,12 +427,13 @@
       "movieReviewSchema": {
         "type": "object",
         "properties": {
-          "movie": {
+          "title": {
             "type": "string"
           },
           "avg-rating": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "maximum": 10
           },
           "reviews": {
             "type": "array",
@@ -440,6 +441,29 @@
               "$ref": "#/components/schemas/reviewSchema"
             }
           }
+        }
+      },
+      "reviewsSchema": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "reviews": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/reviewSchema"
+            }
+          }
+        }
+      },
+      "positiveReviewsSchema": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+
         }
       },
       "reviewSchema": {
@@ -457,6 +481,46 @@
             "type": "string",
             "minLength": 0,
             "maxLength": 500
+          }
+        }
+      },
+      "avgMovieRatingSchema": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "avg-rating": {
+            "type": "number",
+            "format": "double",
+            "maximum": 10
+          }
+        }
+      },
+      "movieRatings": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "ratings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/movieRating"
+            }
+          }
+        }
+      },
+      "movieRating": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "rating": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 10
           }
         }
       }
