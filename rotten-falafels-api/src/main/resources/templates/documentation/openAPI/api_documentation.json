@@ -10,7 +10,7 @@
       "description": "This server will be used for testing purposes"
     },
     {
-      "url": "https://localhost:8081/rotten-falafels",
+      "url": "https://localhost:8080/rotten-falafels",
       "description": "This server will be used for testing purposes in case the first one did not work which I suspect that it won't"
     },
     {
