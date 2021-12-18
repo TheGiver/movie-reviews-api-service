@@ -10,6 +10,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>rotten-falafels-apis</artifactId>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
