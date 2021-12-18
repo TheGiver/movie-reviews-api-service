@@ -558,8 +558,8 @@
         "properties": {
           "error-code": {
             "type": "string",
-            "minLength": "2",
-            "maxLength": "4",
+            "minLength": 2,
+            "maxLength": 4,
             "example": "{00, 123, 3412}"
           },
           "extra-info": {
