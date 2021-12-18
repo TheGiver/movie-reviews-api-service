@@ -1,0 +1,572 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Rotten Falafels",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.server.test/v1",
+      "description": "This server will be used for testing purposes"
+    },
+    {
+      "url": "https://localhost:8081/rotten-falafels",
+      "description": "This server will be used for testing purposes in case the first one did not work which I suspect that it won't"
+    },
+    {
+      "url": "https://virtserver.swaggerhub.com/Xx_Confusion_xX/rotten-falafels/1.0.0",
+      "description": "This server will be used for testing purposes and it refers to the same server provided by swagger openAPI"
+    }
+  ],
+  "paths": {
+    "/movies/summary/all": {
+      "get": {
+        "operationId": "retrieveAllMovieSummaries",
+        "summary": "Retrieve all movie titles, avg ratings and people's comments and reviews that are available in the database",
+        "responses": {
+          "200": {
+            "description": "Movie records retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/movieReviewsSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponseSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/movies/summary/{movieTitle}": {
+      "get": {
+        "operationId": "retrieveMovieSummaryByTitle",
+        "summary": "Retrieve the movie title, avg rating and people's comments and reviews for that movie if it exists in the database",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "movieTitle",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Name of the movie to search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Movie record retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/movieReviewSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Movie not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponseSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ratings/avg-rating/{movieTitle}": {
+      "get": {
+        "operationId": "retrieveAvgRatingByTitle",
+        "summary": "Retrieve the average rating [out of 10] for the movie specified if it exists in the database",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "movieTitle",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Name of the movie to search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Movie found and average rating was calculated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/avgMovieRatingSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Movie not found or no ratings exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponseSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ratings/{movieTitle}": {
+      "get": {
+        "operationId": "retrieveAllRatingsByTitle",
+        "summary": "Retrieve all ratings [out of 10] for the movie specified if it exists in the database",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "movieTitle",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Name of the movie to search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Movie found and ratings were retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/movieRatingsSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Movie not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponseSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/reviews/all/{movieTitle}": {
+      "get": {
+        "operationId": "retrieveAllReviewsByTitle",
+        "summary": "Retrieve all the reviews published for the specified movie if it exists in the database. The reviews contain either people's comments or their ratings or both depending on availability",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "movieTitle",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Name of the movie to search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Movie found and reviews were retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/reviewsSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Movie not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponseSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/reviews/good/{movieTitle}": {
+      "get": {
+        "operationId": "retrieveAllPositiveReviewsByTitle",
+        "summary": "Retrieve all positive reviews for the specified movie if it exists in the database. The reviews contain either people's comments or their ratings or both depending on availability",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "movieTitle",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Name of the movie to search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Movie found and positive reviews were fetched",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/reviewsSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Movie not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponseSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/reviews/bad/{movieTitle}": {
+      "get": {
+        "operationId": "retrieveAllNegativeReviewsByTitle",
+        "summary": "Retrieve all negative reviews for the specified movie if it exists in the database. The reviews contain either people's comments or their ratings or both depending on availability",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "movieTitle",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Name of the movie to search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Movie found and negative reviews were fetched",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/reviewsSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Movie not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponseSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/publish/new-movie": {
+      "post": {
+        "operationId": "addAMovieToThePool",
+        "summary": "Publish a new movie to our database to help us grow and provide support to a wider range of movies and/or series",
+        "requestBody": {
+          "description": "Expected format to add a new movie to the system",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/moviePublicationSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Movie registered in the system"
+          },
+          "400": {
+            "description": "Invalid body request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponseSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/publish/movie-review": {
+      "post": {
+        "operationId": "publishAMovieReview",
+        "summary": "Add a review to a movie of choice. A review consists of either a comment a rating or both depending the user's choice",
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/movieReviewPublicationSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Review added for the selected movie"
+          },
+          "400": {
+            "description": "Invalid body request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponseSchema"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponseSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "moviePublicationSchema": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "release_date": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      },
+      "movieReviewPublicationSchema": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "rating": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10
+          },
+          "comments": {
+            "type": "string"
+          }
+        }
+      },
+      "movieReviewsSchema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/movieReviewSchema"
+        }
+      },
+      "movieReviewSchema": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "avg-rating": {
+            "type": "number",
+            "format": "double",
+            "maximum": 10
+          },
+          "reviews": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/reviewSchema"
+            }
+          }
+        }
+      },
+      "reviewsSchema": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "reviews": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/reviewSchema"
+            }
+          }
+        }
+      },
+      "reviewSchema": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "rating": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10
+          },
+          "comment": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 500
+          }
+        }
+      },
+      "avgMovieRatingSchema": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "avg-rating": {
+            "type": "number",
+            "format": "double",
+            "maximum": 10
+          }
+        }
+      },
+      "movieRatingsSchema": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "ratings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/movieRatingSchema"
+            }
+          }
+        }
+      },
+      "movieRatingSchema": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "rating": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 10
+          }
+        }
+      },
+      "errorResponseSchema": {
+        "type": "object",
+        "properties": {
+          "error-code": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 4,
+            "example": "{00, 123, 3412}"
+          },
+          "extra-info": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
