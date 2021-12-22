@@ -47,14 +47,14 @@
         }
       }
     },
-    "/movies/summary/{movieTitle}": {
+    "/movies/summary": {
       "get": {
         "operationId": "retrieveMovieSummaryByTitle",
         "summary": "Retrieve the movie title, avg rating and people's comments and reviews for that movie if it exists in the database",
         "parameters": [
           {
-            "in": "path",
-            "name": "movieTitle",
+            "in": "query",
+            "name": "title",
             "schema": {
               "type": "string"
             },
@@ -96,14 +96,14 @@
         }
       }
     },
-    "/ratings/avg-rating/{movieTitle}": {
+    "/ratings/avg-rating": {
       "get": {
         "operationId": "retrieveAvgRatingByTitle",
         "summary": "Retrieve the average rating [out of 10] for the movie specified if it exists in the database",
         "parameters": [
           {
-            "in": "path",
-            "name": "movieTitle",
+            "in": "query",
+            "name": "title",
             "schema": {
               "type": "string"
             },
@@ -145,14 +145,14 @@
         }
       }
     },
-    "/ratings/{movieTitle}": {
+    "/ratings": {
       "get": {
         "operationId": "retrieveAllRatingsByTitle",
         "summary": "Retrieve all ratings [out of 10] for the movie specified if it exists in the database",
         "parameters": [
           {
-            "in": "path",
-            "name": "movieTitle",
+            "in": "query",
+            "name": "title",
             "schema": {
               "type": "string"
             },
@@ -194,14 +194,14 @@
         }
       }
     },
-    "/reviews/all/{movieTitle}": {
+    "/reviews/all": {
       "get": {
         "operationId": "retrieveAllReviewsByTitle",
         "summary": "Retrieve all the reviews published for the specified movie if it exists in the database. The reviews contain either people's comments or their ratings or both depending on availability",
         "parameters": [
           {
-            "in": "path",
-            "name": "movieTitle",
+            "in": "query",
+            "name": "title",
             "schema": {
               "type": "string"
             },
@@ -243,14 +243,14 @@
         }
       }
     },
-    "/reviews/good/{movieTitle}": {
+    "/reviews/good": {
       "get": {
         "operationId": "retrieveAllPositiveReviewsByTitle",
         "summary": "Retrieve all positive reviews for the specified movie if it exists in the database. The reviews contain either people's comments or their ratings or both depending on availability",
         "parameters": [
           {
-            "in": "path",
-            "name": "movieTitle",
+            "in": "query",
+            "name": "title",
             "schema": {
               "type": "string"
             },
@@ -292,14 +292,14 @@
         }
       }
     },
-    "/reviews/bad/{movieTitle}": {
+    "/reviews/bad": {
       "get": {
         "operationId": "retrieveAllNegativeReviewsByTitle",
         "summary": "Retrieve all negative reviews for the specified movie if it exists in the database. The reviews contain either people's comments or their ratings or both depending on availability",
         "parameters": [
           {
-            "in": "path",
-            "name": "movieTitle",
+            "in": "query",
+            "name": "title",
             "schema": {
               "type": "string"
             },
