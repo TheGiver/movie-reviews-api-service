@@ -1,0 +1,7 @@
+------------------------------------------------
+- Controllers:
+* I can already see that all controllers will work on processing the requests coming in and translating them into something that the program will understand. 
+* All controllers will be sending some kind of request regardless of whether it a body or not. 
+* All controllers will be built based on REST principles. 
+
+
