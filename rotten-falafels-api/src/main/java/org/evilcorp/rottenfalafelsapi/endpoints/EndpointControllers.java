@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class EndpointControllers implements Endpoints {
+public class EndpointControllers {
 
     @GetMapping("/movies/summary/all")
     @ResponseBody
