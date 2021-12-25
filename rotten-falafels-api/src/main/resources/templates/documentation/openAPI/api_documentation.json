@@ -498,9 +498,6 @@
       "reviewSchema": {
         "type": "object",
         "properties": {
-          "user": {
-            "type": "string"
-          },
           "rating": {
             "type": "integer",
             "minimum": 0,

@@ -4,4 +4,16 @@
 * All controllers will be sending some kind of request regardless of whether it a body or not. 
 * All controllers will be built based on REST principles. 
 
+------------------------------------------------
+- Processing Messages:
+* Each message will most likely be translated into an object that can be used in the code for processing purposes. 
+* 
+------------------------------------------------
+- Database ER Diagram:
+* Each movie will consist of: a title, a release date, an average rating, reviews
+* Each review will consist of: a username (optional and might be removed), a rating (out of 10), comments
+* Each review will be dedicated to one movie only but a movie can contain more than one review
 
+------------------------------------------------
+- Queries:
+a. 
