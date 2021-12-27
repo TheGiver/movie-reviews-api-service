@@ -21,6 +21,7 @@ public class MovieEntity {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date releaseDate;
 
-    @OneToMany(mappedBy = "movies")
+    @OneToMany(mappedBy = "movies", fetch = FetchType.LAZY,
+    cascade = CascadeType.ALL)
     private Set<ReviewEntity> reviews;
 }
