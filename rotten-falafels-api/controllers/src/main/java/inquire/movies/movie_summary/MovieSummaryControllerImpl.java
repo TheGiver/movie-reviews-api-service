@@ -1,5 +1,8 @@
 package inquire.movies.movie_summary;
 
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
 public class MovieSummaryControllerImpl implements MovieSummaryController {
 
     @Override
