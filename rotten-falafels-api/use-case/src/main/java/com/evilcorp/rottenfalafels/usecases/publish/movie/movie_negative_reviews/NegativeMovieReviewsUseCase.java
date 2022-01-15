@@ -1,4 +1,4 @@
-package com.evilcorp.rottenfalafels.usecases.inquire.reviews.movie_negative_reviews;
+package com.evilcorp.rottenfalafels.usecases.publish.movie.movie_negative_reviews;
 
 public class NegativeMovieReviewsUseCase implements INegativeMovieReviewsUseCase {
     @Override
