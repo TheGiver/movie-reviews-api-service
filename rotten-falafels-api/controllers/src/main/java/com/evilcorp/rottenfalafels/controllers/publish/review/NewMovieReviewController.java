@@ -1,5 +1,9 @@
 package com.evilcorp.rottenfalafels.controllers.publish.review;
 
+import com.evilcorp.rottenfalafels.usecases.publish.movie.MoviePublishingUseCaseRequest;
+import com.evilcorp.rottenfalafels.usecases.publish.movie.MoviePublishingUseCaseResponse;
+import com.evilcorp.rottenfalafels.usecases.publish.review.MovieReviewPublishingUseCaseRequest;
+import com.evilcorp.rottenfalafels.usecases.publish.review.MovieReviewPublishingUseCaseResponse;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,5 +12,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface NewMovieReviewController {
 
     @PostMapping(produces = "application/json")
-    ReviewPublicationResponse processRequest(@RequestBody ReviewPublicationRequest request);
+    MovieReviewPublishingUseCaseResponse processRequest(@RequestBody MovieReviewPublishingUseCaseRequest request);
 }

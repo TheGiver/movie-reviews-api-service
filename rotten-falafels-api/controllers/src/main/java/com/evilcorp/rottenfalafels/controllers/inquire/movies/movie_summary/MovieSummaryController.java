@@ -1,5 +1,6 @@
 package com.evilcorp.rottenfalafels.controllers.inquire.movies.movie_summary;
 
+import com.evilcorp.rottenfalafels.usecases.inquire.movies.movie_summary.MovieSummaryUseCaseResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -8,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface MovieSummaryController {
 
     @GetMapping(produces = "application/json")
-    MovieReview processRequest(@RequestParam String title);
+    MovieSummaryUseCaseResponse processRequest(@RequestParam String title);
 
 }

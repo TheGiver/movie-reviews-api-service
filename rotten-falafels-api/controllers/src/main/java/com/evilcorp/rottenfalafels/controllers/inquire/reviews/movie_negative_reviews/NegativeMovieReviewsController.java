@@ -1,5 +1,6 @@
 package com.evilcorp.rottenfalafels.controllers.inquire.reviews.movie_negative_reviews;
 
+import com.evilcorp.rottenfalafels.usecases.publish.movie.movie_negative_reviews.NegativeMovieReviewsUseCaseResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -8,5 +9,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface NegativeMovieReviewsController {
 
     @GetMapping(produces = "application/json")
-    Reviews processRequest(@RequestParam String title);
+    NegativeMovieReviewsUseCaseResponse processRequest(@RequestParam String title);
 }
