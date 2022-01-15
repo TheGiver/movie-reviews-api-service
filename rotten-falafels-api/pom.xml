@@ -3,6 +3,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>16</source>
+                    <target>16</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <groupId>org.evilcorp</groupId>
     <artifactId>rotten-falafels-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -23,12 +35,14 @@
     <modules>
         <module>controllers</module>
         <module>repositories</module>
-        <module>models</module>
         <module>daos</module>
         <module>services</module>
         <module>utils</module>
         <module>fake-daos</module>
         <module>fake-repositories</module>
         <module>use-case</module>
+        <module>rotten-falafels-liquibase</module>
+        <module>models</module>
+        <module>entities</module>
     </modules>
 </project>
