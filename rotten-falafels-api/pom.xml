@@ -36,13 +36,17 @@
         <module>controllers</module>
         <module>repositories</module>
         <module>daos</module>
-        <module>services</module>
         <module>utils</module>
-        <module>fake-daos</module>
-        <module>fake-repositories</module>
         <module>use-case</module>
         <module>rotten-falafels-liquibase</module>
         <module>models</module>
         <module>entities</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+    </dependencies>
 </project>
