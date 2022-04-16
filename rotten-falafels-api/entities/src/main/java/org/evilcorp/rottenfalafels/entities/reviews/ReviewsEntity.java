@@ -1,4 +1,6 @@
-package org.evilcorp.rottenfalafels.entities;
+package org.evilcorp.rottenfalafels.entities.reviews;
+
+import org.evilcorp.rottenfalafels.entities.movies.MoviesEntity;
 
 import javax.persistence.*;
 
