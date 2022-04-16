@@ -7,9 +7,11 @@ c. Provide their own ratings and reviews to the system for other people to benef
 
 ## Technologies used:
 The technologies utilised to build this project will be:
-a. openAPI [Swagger 3.0]
-b. Quarkus
-c. Java as the coding language 
-d. Mysql as the database service
+<ul>
+<li> openAPI [Swagger 3.0]
+<li> Springboot
+<li> Java as the coding language 
+<li> Mysql as the database service
+</ul>
 
 ## Usage 
