@@ -3,12 +3,13 @@ package org.evilcorp.rottenfalafels.repositories;
 import org.evilcorp.rottenfalafels.entities.reviews.ReviewsEntity;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ReviewsRepository extends CrudRepository<ReviewsEntity, Long> {
     @Query("SELECT AVG(rating) FROM reviews r WHERE r.ref_movie_id = :movieId")
-    Long findAvgRatingByMovieId(@Param("movieId") Long movieId);
+    Long findAvgRatingByMovieId(@Param("movieId")Long movieId);
 
     ReviewsEntity findAllReviewsEntityByMovieId(Long movieId);
 
